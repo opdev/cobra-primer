@@ -1,0 +1,1351 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>A Primer on Cobra</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="introduction/010_what_is_cobra.html"><strong aria-hidden="true">1.1.</strong> What is Cobra?</a></li><li class="chapter-item expanded "><a href="introduction/020_anatomy_of_commandline.html"><strong aria-hidden="true">1.2.</strong> The anatomy of a commandline interface</a></li><li class="chapter-item expanded "><a href="introduction/030_a_more_complex_cli.html"><strong aria-hidden="true">1.3.</strong> A more complex interface</a></li></ol></li><li class="chapter-item expanded "><a href="hands_on/index.html"><strong aria-hidden="true">2.</strong> Hands on with Cobra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="hands_on/installing.html"><strong aria-hidden="true">2.1.</strong> The Cobra CLI</a></li><li class="chapter-item expanded "><a href="hands_on/new_project.html"><strong aria-hidden="true">2.2.</strong> Creating a new project</a></li><li class="chapter-item expanded "><a href="hands_on/rootcmd.html"><strong aria-hidden="true">2.3.</strong> The Root Command</a></li><li class="chapter-item expanded "><a href="hands_on/rootcmd_helptext.html"><strong aria-hidden="true">2.4.</strong> Adding Relevant Help Text</a></li><li class="chapter-item expanded "><a href="hands_on/adding_a_subcommand.html"><strong aria-hidden="true">2.5.</strong> Adding a subcommand</a></li><li class="chapter-item expanded "><a href="hands_on/implementing_logic.html"><strong aria-hidden="true">2.6.</strong> Implementing Logic</a></li><li class="chapter-item expanded "><a href="hands_on/wiring_up_arguments.html"><strong aria-hidden="true">2.7.</strong> Wiring up Arguments</a></li><li class="chapter-item expanded "><a href="hands_on/using_RunE.html"><strong aria-hidden="true">2.8.</strong> Returning an error</a></li><li class="chapter-item expanded "><a href="hands_on/filtering_arguments.html"><strong aria-hidden="true">2.9.</strong> Enforcing Expectations on Arguments</a></li><li class="chapter-item expanded "><a href="hands_on/cmd_output.html"><strong aria-hidden="true">2.10.</strong> Writing to STDOUT and STDERR</a></li><li class="chapter-item expanded "><a href="hands_on/adding_an_alias.html"><strong aria-hidden="true">2.11.</strong> Adding an alias</a></li><li class="chapter-item expanded "><a href="hands_on/subtraction.html"><strong aria-hidden="true">2.12.</strong> Adding another subcommand</a></li><li class="chapter-item expanded "><a href="hands_on/adding_flags.html"><strong aria-hidden="true">2.13.</strong> Adding a flag</a></li><li class="chapter-item expanded "><a href="hands_on/another_subcommand.html"><strong aria-hidden="true">2.14.</strong> Adding subcommands to subcommands</a></li><li class="chapter-item expanded "><a href="hands_on/deprecations.html"><strong aria-hidden="true">2.15.</strong> Marking commands deprecated</a></li><li class="chapter-item expanded "><a href="hands_on/hidden_cmds.html"><strong aria-hidden="true">2.16.</strong> Adding hidden commands</a></li><li class="chapter-item expanded "><a href="hands_on/persistent_flags.html"><strong aria-hidden="true">2.17.</strong> Adding persistent flags</a></li><li class="chapter-item expanded "><a href="hands_on/testing.html"><strong aria-hidden="true">2.18.</strong> Testing</a></li></ol></li><li class="chapter-item expanded "><a href="closing.html"><strong aria-hidden="true">3.</strong> Final Word</a></li><li class="chapter-item expanded "><a href="appendix/index.html"><strong aria-hidden="true">4.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix/links.html"><strong aria-hidden="true">4.1.</strong> Links</a></li><li class="chapter-item expanded "><a href="appendix/gocat.html"><strong aria-hidden="true">4.2.</strong> Cat in Go</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">A Primer on Cobra</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>This is a quick reference guide on what the <a href="introduction/cobra.dev">spf13/cobra</a> package is,
+and how it can be used.</p>
+<p>As a prerequisite, you'll need to be able to read <a href="introduction/go.dev">Golang</a>. This does
+not aim to replace the Cobra documentation, but instead just act as a
+cheatsheet/refrence for accomplishing basic tasks with the
+<a href="introduction/cobra.dev">spf13/cobra</a> library.</p>
+<p>The first chapter is a bit more verbose as it sets the stage as to what Cobra is
+and what problem it solves for developers.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-cobra"><a class="header" href="#what-is-cobra">What is Cobra?</a></h1>
+<p><a href="https://cobra.dev/">Cobra</a> is a commandline interface development toolkit for
+Golang. It allows enables Golang developers to build robust and complex
+commandline interfaces easily.</p>
+<p>It gives developers a framework to be able to build interfaces that need more
+than just the ability to parse a series of flags and arguments on a single
+command. It gives developers the ability to build <strong>subcommands</strong>, each with
+their own behaviors, flags, arguments, expectations, etc.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-anatomy-of-a-commandline-interface"><a class="header" href="#the-anatomy-of-a-commandline-interface">The anatomy of a commandline interface</a></h1>
+<p>Let's take a look at a typical commandline interface. Say we invoke the <code>cat</code>
+command:</p>
+<pre><code class="language-shell">cat -n myfile.txt
+</code></pre>
+<p>We could describe this as:</p>
+<ul>
+<li><code>cat</code> is our <strong>command</strong>.</li>
+<li><code>-n</code> is a <strong>short flag</strong>.</li>
+<li><code>myfile.txt</code> is our <strong>argument</strong>.</li>
+</ul>
+<p>Building something like this call is fairly simple in golang with just the
+standard library. Building our <code>main.go</code> (or equivalent) file would produce a
+binary on disk, which acts as our <strong>command</strong>.</p>
+<p>We would just need to reach into the standard library for the
+<a href="https://pkg.go.dev/flag">flag</a> package, which gives us the ability to register
+and parse <strong>flags</strong>.</p>
+<p>Finally, we would just need to review the argument list to grab the final value of
+<code>myfile.txt</code> that the user provided, and take action.</p>
+<p>But what if we want something more complex?</p>
+<p><em>For reference, a naive implementation of <code>cat</code> with the <code>-n</code> flag using the
+<strong>flag</strong> package is <a href="introduction/./appendix/gocat.html">here</a>.</em></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="a-more-complex-interface"><a class="header" href="#a-more-complex-interface">A more complex interface</a></h1>
+<p>Let's take a look at a typical <code>kubectl</code> invocation:</p>
+<pre><code class="language-shell">kubectl apply -f mypod.yaml
+</code></pre>
+<p>This commandline interface looks a little different in that now we've got this
+structure here:</p>
+<pre><code class="language-txt">COMMAND SUBCOMMAND  SHORTFLAG   ARGUMENT
+kubectl apply       -f          mypod.yaml
+</code></pre>
+<p>So here we see this idea of a <strong>subcommand</strong>.</p>
+<p>The <code>kubectl</code> command itself takes on a more organizational role, in that it
+almost <em>defines</em> the context for a subcommand (&quot;We're working with a kubernetes
+cluster&quot;).</p>
+<p>Running <code>kubectl</code> by itself generally does not take any action, other
+than displaying help text. But while it does not take any action, it may itself
+have some of its own flags that apply to all subcommands (see <code>kubectl options</code>).</p>
+<p>The actual action we're taking here is described by the subcommand: <code>apply</code>
+(&quot;we're going to take some data and apply it to the cluster&quot;).</p>
+<p>And if you're familiar with <code>kubectl</code>, you'll know that it gives us many more
+commands to interact with our cluster (such as <code>get</code>, <code>describe</code>, <code>create</code>,
+etc). And each subcommand may have its own flags, on top of those already built
+into the top-level <code>kubectl command</code>. </p>
+<p>Building this kind of commandline interface with just the <strong>flag</strong> package can
+be complex. The <strong>flag</strong> package helps us extract short and long flags out of
+the arguments passed into our binary by the user, but we need to build in these
+relationships such that each subcommand may have its own flags, and the base
+command itself has its own flags. Before you know it, you've written more logic
+to handle the relationships between your commands than your actual business
+logic.</p>
+<p>This is the problem the <a href="introduction/cobra.dev">Cobra</a> library solves for us.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hands-on-with-cobra"><a class="header" href="#hands-on-with-cobra">Hands on with Cobra</a></h1>
+<p>At this point, we'll start to work with cobra itself, and go through a few use
+cases that you might apply in you development. The examples here will be a bit
+brief, but that's simply because this should serve as a <em>reference</em>, and not as
+<em>documentation</em> for how to use Cobra in your project.</p>
+<p>The example logic that we'll use in our command may seem a bit silly; we don't
+care too much about what this example command does, but rather what we can do to
+cobra to achieve our end goal. Those concepts are what you will want to apply to
+your projects.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-cobra-cli"><a class="header" href="#the-cobra-cli">The Cobra CLI</a></h1>
+<p>Using cobra in your project is as simple as importing <code>github.com/spf13/cobra</code>
+where you need it, and then building out your command structure. If you're just
+getting started using cobra, however, it may be beneficial to instead use
+<code>cobra-cli</code>, which is a scaffolding tool for cobra applications.</p>
+<p>We'll use that here, but just know that it's not a requirement. You can just as
+easily start your CLI project by importing cobra and laying out your project as
+you want. </p>
+<p>Follow the instructions <a href="https://github.com/spf13/cobra#usage">here</a> for
+installing the Cobra command line tool. The instructions indicate that you'll
+install the &quot;latest&quot; version of <code>cobra-cli</code>, which at the time of this writing
+appears to be v1.3.0. The commands you see here may differ slightly if you have
+a different version, but that's okay.</p>
+<p>Once you've installed <code>cobra-cli</code>, make sure it's in your <code>$PATH</code> by calling </p>
+<pre><code>cobra-cli --help
+</code></pre>
+<p>If the you get a <code>command not found</code> error (or similar, then that implies that
+your <code>$GOBIN</code> is not in your <code>$PATH</code>). Resolve that first before moving on. </p>
+<hr />
+<p>This book will build out a <code>math</code> binary that has several mathematical
+operations encompassed as subcommands. Like I mentioned, it's a bit silly and
+contrived, but we don't really want to implement a ton of logic here - we just
+want to see what we can do with cobra.</p>
+<p>The completed source code for the command built here will be available at
+<a href="https://github.com/opdev/cobra-primer/math">https://github.com/opdev/cobra-primer/math</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="creating-a-new-project"><a class="header" href="#creating-a-new-project">Creating a new project</a></h1>
+<p>Let's create a new project. These instructions try not to make assumptions about
+where you like to write your Go code, so it's a bit vague as to where you're
+making these directories by design.</p>
+<p>Create a new golang project where you like to store your projects (if you're
+using gomodules), or within your <code>$GOPATH</code> (somewhere like
+<code>$GOPATH/src/github.com/&lt;yourusername&gt;/</code>). </p>
+<pre><code>mkdir math
+</code></pre>
+<p>Initialize gomodules in this path by calling either <code>go mod init</code> (if you're
+within your <code>$GOPATH</code>, or <code>go mod init &lt;module&gt;</code> (if you're working in module
+mode somewhere else on your filesystem).</p>
+<p>Once you're in the <code>math</code> directory, run the new <code>cobra-cli</code> command with a few
+flags.</p>
+<pre><code>cobra-cli init --author &quot;&lt;your name here&gt;&quot;
+</code></pre>
+<p>Example:</p>
+<pre><code>cobra-cli init --author &quot;&lt;your name here&gt;&quot;
+</code></pre>
+<p>Response</p>
+<pre><code>Your Cobra application is ready at
+/Users/me/.go/src/github.com/opdev/cobra-primer/math
+</code></pre>
+<p>Take a look at your folder; you should see several new files that have been
+scaffolded for you.</p>
+<pre><code>.
+├── LICENSE
+├── cmd
+│   └── root.go
+├── go.mod
+├── go.sum
+└── main.go 
+</code></pre>
+<p>Take a look at <code>main.go</code>.</p>
+<pre><code>package main
+
+import &quot;github.com/opdev/cobra-primer/math/cmd&quot;
+
+func main() {
+	cmd.Execute()
+}
+
+</code></pre>
+<p>Aside from some comments that I've truncated from this file for this book, the
+overall contents is incredibly short. </p>
+<p>All that's happening here is that we're importing a local package <code>cmd</code> and
+running some function defined there called <code>Execute()</code>. </p>
+<p>At this point, your project should build and run without issue. Try a <code>go run .</code> </p>
+<pre><code>$ go run .
+A longer description that spans multiple lines and likely contains
+examples and usage of using your application. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.
+</code></pre>
+<p>A little blurb if text is returned, generated by <code>cobra-cli</code> while scaffolding
+out what's called the <code>Root Command</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-root-command"><a class="header" href="#the-root-command">The Root Command</a></h1>
+<p>Inside of the <code>cmd</code> directory (&quot;package&quot;) that <code>cobra-cli</code> scaffolded for you
+should be a file called <code>root.go</code>. Let's look at some key parts of this file
+(I've truncated a few sections with <code>...</code> so that it sits cleaner in this book.)</p>
+<pre><code class="language-go">// rootCmd represents the base command when called without any subcommands
+var rootCmd = &amp;cobra.Command{
+	Use:   &quot;math&quot;,
+	Short: &quot;A brief description of your application&quot;,
+	Long: `...`,
+	// Uncomment the following line if your bare application
+	// has an action associated with it:
+	// Run: func(cmd *cobra.Command, args []string) { },
+}
+</code></pre>
+<p>Here we define the variable <code>rootCmd</code> at the global scope to be a
+<code>*cobra.Command</code>. the <code>cobra.Command</code> struct is the building block of
+cobra-based applications, and is how we define almost everything we need
+(metadata, logic, etc.) to execute our business logic. Every command and
+subcommand will be defined as one of these <code>cobra.Command</code>s. We'll use these to
+build out our tree of subcommands.</p>
+<p>As we saw, our <code>main()</code> function calls the <code>Execute()</code> function in this package,
+which itself just wraps our <code>rootCmd</code>. </p>
+<pre><code class="language-go">// Execute adds all child commands to the root command and sets flags appropriately.
+// This is called by main.main(). It only needs to happen once to the rootCmd.
+func Execute() {
+	err := rootCmd.Execute()
+	if err != nil {
+		os.Exit(1)
+	}
+}
+</code></pre>
+<p>As the scaffolded comment suggests, this is called by <code>main()</code>, and only ever
+needs to happen here.</p>
+<hr />
+<p>As mentioned in the <code>kubectl</code> context, the root command of a non-trivial CLI
+application is typically organizational, and typically doesn't have any logic
+associated with it. That way, when a user runs our command with no flags,
+subcommands, args, or otherwise, they get the help output in return to help
+guide them.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-relevant-help-text"><a class="header" href="#adding-relevant-help-text">Adding Relevant Help Text</a></h1>
+<p>Our root command is currently returning scaffolded help text. That's not super
+helpful - let's update that to something like this.</p>
+<pre><code class="language-go">var rootCmd = &amp;cobra.Command{
+	Use:   &quot;math&quot;,
+	Short: &quot;Execute fun math functions&quot;,
+}
+</code></pre>
+<p>I've removed the <code>Long</code> key from the <code>rootCmd</code>. For your actual projects,
+provide something useful there, such as links to documentation, a longer
+explanation of your goals with this tool, some examples - whatever you see fit.</p>
+<p>Save, build and run the project, and you should see our new short text is
+printed whenever I run it with no arguments:</p>
+<pre><code class="language-shell">$ go build -o math . &amp;&amp; ./math
+Execute fun math functions
+</code></pre>
+<p>Our help output is pretty bare right now, but it'll improve as we add
+subcommands.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-a-subcommand"><a class="header" href="#adding-a-subcommand">Adding a subcommand</a></h1>
+<p>So now lets add an easy subcommand - <code>sum</code>, to make our CLI function like this:</p>
+<pre><code class="language-shell">math sum 1 2 3
+&gt;6
+</code></pre>
+<p>We'll use <code>cobra-cli</code> to <code>add</code> a new subcommand to the <code>rootCmd</code>, and save us
+from having to write out the new <code>*cobra.Command</code> ourselves. Run this from the
+root of your source code repository.</p>
+<pre><code>cobra-cli add sum
+</code></pre>
+<p>You should now see a new <code>cmd/sum.go</code> file in place:</p>
+<pre><code>.
+├── LICENSE
+├── cmd
+│   ├── root.go
+│   └── sum.go  &lt;-- new!
+├── go.mod
+├── go.sum
+├── main.go
+└── math
+</code></pre>
+<p>Open this file, and take a look at the <code>init()</code> function declaration:</p>
+<pre><code class="language-go">func init() {
+	rootCmd.AddCommand(sumCmd)
+}
+</code></pre>
+<p>This is where we start building our tree of commands. Here we've taken <code>rootCmd</code>
+and added the new <code>sumCmd</code> to it as a subcommand. Our tree looks something like
+this:</p>
+<p><img src="hands_on/../imgs/01.png" alt="root and sum commands" /></p>
+<p>If you build and run your project now, you'll see our help output has changed.</p>
+<pre><code>$ go build -o math . &amp;&amp; ./math
+Execute fun math functions
+
+Usage:
+  math [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  sum         A brief description of your command
+
+Flags:
+  -h, --help     help for math
+  -t, --toggle   Help message for toggle
+
+Use &quot;math [command] --help&quot; for more information about a command.
+</code></pre>
+<p>We now have our <code>sum</code> command with its (<code>Short</code>) description, as well as some
+flag definitions (more to come on those later, it was scaffolded by <code>cobra-cli</code>
+and I've ignored it so far), and generic subcommands like <code>help</code>. You now also
+see a <code>Usage</code> statement.</p>
+<p>Now, you can also run the <code>math sum</code> command. Try that now.</p>
+<pre><code>$ ./math sum
+sum called
+</code></pre>
+<h2 id="practice"><a class="header" href="#practice">Practice:</a></h2>
+<p>If you're following along, go ahead and practice what we did with the root
+command: Change the Short and Long descriptions for the <code>sumCmd</code> to indicate
+that we will take an arbitrary number of integers and return the sum of those
+values.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="implementing-logic"><a class="header" href="#implementing-logic">Implementing Logic</a></h1>
+<p>So now that we have a <code>sum</code> command, we can implement some logic. </p>
+<p>If you take a look at the <code>sumCmd</code>, you'll notice that it has a key called <code>Run</code>
+with a scaffolded anonymous function that runs <code>fmt.Println(&quot;sum called&quot;)</code>.
+That's what we saw in the last section when we ran <code>math sum</code>.</p>
+<pre><code class="language-go">var sumCmd = &amp;cobra.Command{
+	Use:   &quot;sum&quot;,
+    ...
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println(&quot;sum called&quot;)
+	},
+}
+</code></pre>
+<p>These <code>Run</code> functions are where you will implement the business logic for your
+subcommand. The <code>Run</code> documentation is below:</p>
+<pre><code class="language-go">    // Run: Typically the actual work function. Most commands will only implement this.
+	Run func(cmd *Command, args []string)
+</code></pre>
+<p>Effectively, the <code>Run</code> key in a <code>cobra.Command</code> struct just needs to be a
+function that has this exact signature. By convention, I prefer to have these
+functions defined (as opposed to being anonymous functions), so you might see me
+do something like this:</p>
+<pre><code class="language-go">var sumCmd = &amp;cobra.Command{
+	Use:   &quot;sum&quot;,
+    ...
+	Run: sumCommandRun,
+}
+
+func sumCommandRun(cmd *cobra.Command, args []string) {
+		fmt.Println(&quot;sum called&quot;)
+}
+</code></pre>
+<p>Subjectively, this makes the cobra command a little bit easier to read.</p>
+<p>Let's replace this placeholder <code>println</code> with some logic. I'll write a sum
+function that look something like this (there may already be sum functions, but
+these are simple enough to write):</p>
+<pre><code class="language-go">func sum(values ...int) int {
+	x := 0
+	for _, v := range values {
+		x += v
+	}
+
+	return x
+}
+</code></pre>
+<p>You should be able to call this function with an arbitrary number of integer
+values and get the sum of those values. Check it out on the <a href="https://go.dev/play/">Go
+Playground</a></p>
+<p>Our core logic is written, so now we just need to wire up the arguments that the
+user provided to this function.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="wiring-up-arguments"><a class="header" href="#wiring-up-arguments">Wiring up Arguments</a></h1>
+<p>At this point, we have our business logic (the <code>sum(...)</code> function) written and
+working. We just need to replace the placeholder code in our <code>sumCommandRun</code> so
+that it uses the <code>sum</code> function. We need to get the user's arguments passed over
+to our <code>sum</code> function so that everything works.</p>
+<p>If you look at the function signature required for the <code>cobra.Command.Run</code>
+struct key,  and our <code>sumCommandRun</code> function, you'll see that <code>args</code> is a
+parameter we can use, and it contains the arguments passed in by the user,
+without flags or the subcommand structure.</p>
+<p>So for example, if the user ran <code>math sum 1 2 3</code>, then we'd expect <code>args</code> to be
+<code>[]string{&quot;1&quot;, &quot;2&quot;, &quot;3&quot;}</code>.</p>
+<p>With that in mind, the problem we have with <code>args</code> is that it's a <code>[]string</code>.
+Let's convert that over to a <code>[]int</code> which is what our <code>sum</code> function uses. The
+logic to do this isn't important, but helps us complete this example.</p>
+<pre><code class="language-go">func sumCommandRun(cmd *cobra.Command, args []string) {
+	// convert args which is []string to []int
+	values := make([]int, len(args))
+	for i, v := range args {
+		vAsInt, _ := strconv.Atoi(v)
+		values[i] = vAsInt
+	}
+
+	fmt.Println(sum(values...))
+}
+</code></pre>
+<p>Then build and run the <code>sum</code> subcommand:</p>
+<pre><code class="language-shell"># go build -o math . &amp;&amp; ./math sum 2 3 4
+9
+</code></pre>
+<p>Everything works!</p>
+<p>So the <code>args</code> parameter that we have to work with here in our <code>Run</code> function
+contains all of the arguments that are passed in by the user to this subcommand.
+Feel free to <code>fmt.Println([]args)</code>, and then run <code>math sum</code> with random values
+to see what gets printed.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="returning-an-error"><a class="header" href="#returning-an-error">Returning an error</a></h1>
+<p>In the last section, we wired up our user's arguments and passed it to our <code>sum</code>
+function. What happens if the user passes in a string value? What about a
+decimal?</p>
+<pre><code class="language-shell"># ./math sum 1 2 3 foo
+6
+
+# ./math sum 1 2 3 2.1
+6
+</code></pre>
+<p>Our sum function isn't even batting an eye! It's just completely ignoring the
+string <code>foo</code>, and the decimal <code>2.1</code> value.  That's because we ignored our error
+when we converted from <code>[]string</code> to <code>[]int</code>. Take a look at the line with block
+<code>[1]</code>.:</p>
+<pre><code class="language-go">// ...
+    for i, v := range args {
+            vAsInt, _ := strconv.Atoi(v)       // [1]
+            values[i] = vAsInt
+    }
+// ...
+</code></pre>
+<p>Here we use the <code>strconv</code> librarie's <code>Atoi</code> function to convert the string value
+to an integer, and then we disregard the second return value which is an error.
+Ideally, we want to return that error, but we have a bit of a problem. Our
+<code>sumCommandRun</code> function doesn't return an error, but that's easy enough to fix:</p>
+<pre><code class="language-go">func sumCommandRun(cmd *cobra.Command, args []string) error { // return an error
+	// convert args which is []string to []int
+	values := make([]int, len(args))
+	for i, v := range args {
+		vAsInt, err := strconv.Atoi(v)
+        if err != nil {     // new code!
+            return fmt.Errorf(&quot;you provide a value that was not an integer: %s&quot;, v)
+        }
+		values[i] = vAsInt
+	}
+
+	fmt.Println(sum(values...))
+
+    return nil // all went well, return no error
+}
+</code></pre>
+<p>As soon as we reconfigure our function, our <code>sumCmd</code> should show an error that
+reads:</p>
+<pre><code class="language-text">cannot use sumCommandRun
+    (value of type func(cmd *cobra.Command, args []string) error)
+as
+    func(cmd *cobra.Command, args []string) value in struct literal
+</code></pre>
+<p>This is because the <code>cobra.Command.Run</code> key enforces a specific function
+signature that matched what we were using previously. If we want to return an
+error in our function, we can do so by instead assigning our function to <code>RunE</code>.
+Its function signature is identical, but it returns an error.</p>
+<pre><code class="language-Go">//...
+var sumCmd = &amp;cobra.Command{
+	Use:   &quot;sum&quot;,
+    //...
+
+    //Run: sumCommandRun        // this is what we used before
+	RunE: sumCommandRunE,        // and replaced it with this.
+}
+/...
+</code></pre>
+<p>By convention, I've also renamed our <code>sumCommandRun</code> to <code>sumCommandRunE</code> to make
+it match the command struct key to which it applies.</p>
+<p>The project should be happy, and you should see an error returned when the user
+provides non-integer values.</p>
+<pre><code>$ go build -o math . &amp;&amp; ./math sum 1 2 3 foo
+Error: you provide a value that was not an integer: foo
+Usage:
+  math sum [flags]
+
+Flags:
+  -h, --help   help for sum
+</code></pre>
+<p>And since we've returned an error, the help output is provided to the user. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="enforcing-expectations-on-arguments"><a class="header" href="#enforcing-expectations-on-arguments">Enforcing Expectations on Arguments</a></h1>
+<p>What happens if we don't provide any arguments to our <code>math sum</code> subcommand?</p>
+<pre><code class="language-shell"># ./math sum
+0
+</code></pre>
+<p>I supposed that's technically correct! We didn't provide arguments, so the sum
+of 0 is... well 0. But instead, let's make sure the user provides values, or
+otherwise print the help output. One way to do that is using the
+<code>cobra.Command.Args</code> key. This key specifies that its type is <code>PositionalArgs</code>.
+If we look through cobra's documentation, we see that type defined as a function
+with this signature:</p>
+<pre><code>type PositionalArgs func(cmd *Command, args []string) error
+</code></pre>
+<p>Check it out in the documentation
+<a href="https://pkg.go.dev/github.com/spf13/cobra#PositionalArgs">here</a>.</p>
+<p>That means we can write a function that fits that signature, and pass it to
+<code>sumCmd</code>'s Args key. Since we've got <code>args</code> as a parameter here as well, this is
+actually pretty easy to write. But Cobra actually makes some pre-defined
+functions available to us, and one of those does exactly what we want:</p>
+<pre><code class="language-go">// MinimumNArgs returns an error if there is not at least N args. 
+func MinimumNArgs(n int) PositionalArgs`
+</code></pre>
+<p><a href="https://pkg.go.dev/github.com/spf13/cobra#MinimumNArgs">Doc</a></p>
+<p>We can use that to enforce the expectation that we have at least 1 argument by
+passing this function to the <code>Args</code> key in our <code>sumCmd</code>:</p>
+<pre><code class="language-go">// sumCmd represents the sum command
+var sumCmd = &amp;cobra.Command{
+	Use:   &quot;sum&quot;,
+	Args:  cobra.MinimumNArgs(1),   // Add it here
+	Short: &quot;A brief description of your command&quot;,
+    // ...
+}
+</code></pre>
+<p>Now the command properly indicates that we didn't provide enough arguments when
+called:</p>
+<pre><code class="language-shell"># go build -o math . &amp;&amp; ./math sum 
+Error: requires at least 1 arg(s), only received 0
+Usage:
+  math sum [flags]
+
+Flags:
+  -h, --help   help for sum
+</code></pre>
+<p>There are several other PositionalArg (or <code>Args</code> compatible) functions in the
+cobra library, but since we know the function signature, we can build our own.</p>
+<p>In addition the cobra library also lets us enforce multiple requirements on our
+arguments as well by using the <code>cobra.MatchAll</code> function
+<a href="https://pkg.go.dev/github.com/spf13/cobra#MatchAll">doc</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="writing-to-stdout-and-stderr"><a class="header" href="#writing-to-stdout-and-stderr">Writing to STDOUT and STDERR</a></h1>
+<p>It's fairly common to use <code>fmt.Println</code> to print output to the user. Both
+<code>Println</code> and <code>Printf</code> will actually print to <code>os.Stdout</code> for us, and so it
+serves as a convenience function for hacking on some code quickly, and getting
+some text in front of the user.
+<a href="https://cs.opensource.google/go/go/+/refs/tags/go1.18.3:src/fmt/print.go;l=273">ref</a></p>
+<p>Cobra commands actually provide some wiring for printing things to the user via
+Stdout or Stderr that allows us to configure its outputs to write to anything
+that fulfills the io.Writer interface (e.g. log files, byte buffers, etc). We
+don't need to concern ourselves with that quite yet, but what we do want to do
+instead of using <code>fmt.Println</code> is use the built-in output for stdout/stderr if
+we need them.</p>
+<p>In our <code>sumCommandRunE</code>, we write the sum using <code>fmt.Println</code>:</p>
+<pre><code>func sumCommandRunE(cmd *cobra.Command, args []string) error { // return an error
+	// convert args which is []string to []int
+	values := make([]int, len(args))
+	for i, v := range args {
+		vAsInt, err := strconv.Atoi(v)
+		if err != nil { // new code!
+			return fmt.Errorf(&quot;you provide a value that was not an integer: %s&quot;, v)
+		}
+		values[i] = vAsInt
+	}
+
+	fmt.Println(sum(values...))         // Writes happen here!
+
+	return nil
+}
+</code></pre>
+<p>Instead, lets leverage the output target configured for the command. In
+fairness, we haven't reconfigured it in this example, but we <em>can</em>, and that
+will become more important when testing your cobra commands.</p>
+<p>Change the line to look like this:</p>
+<pre><code class="language-go">	// fmt.Println(sum(values...))         // Old!
+    fmt.Fprintln(cmd.OutOrStdout(), sum(values...))
+</code></pre>
+<p>If you're not familiar with Fprintln, it effectively allows you to <em>provide</em> the
+write target (the <code>io.Writer</code> interface) instead of assuming it should be
+os.Stdout, as <code>fmt.Println</code> does. In this instance, we're passing in the cobra
+command's configured writer. It, internally, will write to os.Stdout if nothing
+else was configured.</p>
+<p>We don't use it here, but there's an equivalent <code>cmd.OutOrStderr</code> function as
+well.</p>
+<p>If you run the command, nothing should have changed.</p>
+<pre><code class="language-text">$ go build -o math . &amp;&amp; ./math sum 1 3
+4
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-an-alias"><a class="header" href="#adding-an-alias">Adding an alias</a></h1>
+<p>As your start to develop your tool, there may be cases where you want to <code>alias</code> a given subcommand. This is very easy to do, as there is an <code>Alias</code> key in the <code>cobra.Command</code> struct. Let's say that <code>total</code> is an alias of <code>sum</code>, such that a user can call <code>math total</code> and get the same logic.</p>
+<pre><code class="language-go">var sumCmd = &amp;cobra.Command{
+	Use:     &quot;sum&quot;,
+	Aliases: []string{&quot;total&quot;},         // total!
+    // ... nothing else changed
+}
+</code></pre>
+<p>Now run the command with <code>total</code> instead of <code>sum</code>, and see the same logic applied.</p>
+<pre><code class="language-shell"># go build -o math . &amp;&amp; ./math total 1 2 3
+6
+</code></pre>
+<p>This isn't a perfect user experience. You'll notice that <code>total</code> is not shown in the subcommand list:</p>
+<pre><code>./math -h
+Execute fun math functions
+
+Usage:
+  math [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  sum         A brief description of your command
+
+Flags:
+  -h, --help     help for math
+  -t, --toggle   Help message for toggle
+
+Use &quot;math [command] --help&quot; for more information about a command.
+</code></pre>
+<p>It is shown in the help output for <code>sum</code>, however:</p>
+<pre><code>./math sum -h
+Given an arbitrary number of integer arguments,
+
+this will return the sum of all values.
+
+Usage:
+  math sum [flags]
+
+Aliases:
+  sum, total
+
+Flags:
+  -h, --help   help for sum
+</code></pre>
+<p>To that end, aliases are mostly helpful in cases where you have shorthand names
+for common functions. An example might be <code>cp</code> for <code>copy</code>, <code>mv</code> for <code>move</code>, and
+<code>rm</code> for <code>remove</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-another-subcommand"><a class="header" href="#adding-another-subcommand">Adding another subcommand</a></h1>
+<p>Let's break out <code>cobra-cli</code> and add a <code>subtract</code> subcommand! Run this from the
+base of your repository.</p>
+<pre><code>$ cobra-cli add subtract
+subtract created at /Users/me/.go/src/github.com/opdev/cobra-primer/math
+</code></pre>
+<p>Now we've got a <code>cmd/subtract.go</code> file:</p>
+<pre><code>.
+├── LICENSE
+├── cmd
+│   ├── root.go
+│   ├── subtract.go
+│   └── sum.go
+├── go.mod
+├── go.sum
+├── main.go
+└── math
+</code></pre>
+<p>Modify the <code>Long</code> and <code>Short</code> descriptions as you see fit. As a practice, try the following actions:</p>
+<ul>
+<li>Make the command accept only 2 positional arguments, e.g. <code>math subtract 2 3</code></li>
+<li>Swap out the <code>Run</code> function with a standalone <code>RunE</code> function.</li>
+<li>Convert the <code>args</code> values to integers, returning errors if encountered (copy
+this from the <code>sum</code> command, or better yet, make it its own function and reuse
+it here).</li>
+</ul>
+<p>When done, the <code>math subtract</code> function should work like this:</p>
+<pre><code>$ ./math subtract 2 3
+-1
+
+$ ./math subtract 2 3 4
+Error: accepts 2 arg(s), received 3
+Usage:
+  math subtract [flags]
+
+Flags:
+  -h, --help   help for subtract
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-a-flag"><a class="header" href="#adding-a-flag">Adding a flag</a></h1>
+<p>So far, we've been working with subcommands and positional args. For example:</p>
+<pre><code>COMMAND SUBCOMMAND POSITIONALARGS...
+math    subtract   1 2
+</code></pre>
+<p>Cobra documentation suggests that your <strong>subcommands</strong> should describe your
+actions, and <strong>flags</strong> should modify those actions. So for the subtract command,
+we're going to add a flag that inverts the sign of the integer. Lets call it
+<code>--invert-sign</code>. Our result would look like:</p>
+<pre><code>math subtract --invert-sign 1 2
+1
+</code></pre>
+<p>It's a pretty silly example, but we don't want to spend time on our logic. We
+want to spend time on cobra!</p>
+<p>So let's implement a flag in the <code>subtract.go</code> file. Take a look at the <code>init</code>
+section at the very bottom. It probably contains some commented code:</p>
+<pre><code class="language-go">func init() {
+	rootCmd.AddCommand(subtractCmd)
+
+	// Here you will define your flags and configuration settings.
+
+	// Cobra supports Persistent Flags which will work for this command
+	// and all subcommands, e.g.:
+	// subtractCmd.PersistentFlags().String(&quot;foo&quot;, &quot;&quot;, &quot;A help for foo&quot;)
+
+	// Cobra supports local flags which will only run when this command
+	// is called directly, e.g.:
+	// subtractCmd.Flags().BoolP(&quot;toggle&quot;, &quot;t&quot;, false, &quot;Help message for toggle&quot;)
+}
+</code></pre>
+<p>It also already contains our <code>AddCommand</code> call, binding the <code>subtractCmd</code> to our
+<code>rootCmd</code>. We didn't have to do any of that wiring - it was done for us by
+<code>cobra-cli</code>.</p>
+<p>We're going to create a <code>local</code> flag, and so we're going to reuse the last line
+of this commented code. Go ahead and uncomment this line. Replace <code>toggle</code> with
+<code>invert-sign</code>, and <code>t</code> with <code>i</code>. </p>
+<pre><code class="language-go">func init() {
+	rootCmd.AddCommand(subtractCmd)
+    // ...
+	subtractCmd.Flags().BoolP(&quot;invert-sign&quot;, &quot;i&quot;, false, &quot;inverts the sign of the result.&quot;)
+}
+</code></pre>
+<p>The <code>invert-sign</code> value is what will become the long flag. Users will be able to
+include <code>--invert-sign</code> in their command call once we add this to our
+subtractCmd. The <code>i</code> is the <strong>short</strong> flag. Users can do either the long flag,
+or the short flag; they will mean the same thing.</p>
+<p>The default value will be <code>false</code>, and the final string of text is just the
+description of the flag's behavior.</p>
+<p>Finally, this is a boolean flag, as denoted by the method call which is <code>BoolP</code>.
+There are several other types of flags, such as StringP, IntP, etc. The <code>P</code> in
+<code>BoolP</code> denotes that you also want to include a short flag, which is nice and
+convenient for users. If you prefer not to include a short flag, just use
+<code>Bool</code>, or whatever type of flag you want.</p>
+<p>If you build and run the project now, you see that the <code>subtract</code> subcommand has
+our new flag and its description.</p>
+<pre><code>$ go build . &amp;&amp; ./math subtract -h
+subtract integers
+
+Usage:
+  math subtract [flags]
+
+Flags:
+  -h, --help          help for subtract
+  -i, --invert-sign   inverts the sign of the result.
+</code></pre>
+<p>That said, enabling the flag doesn't change anything, so we need to update our
+<code>subtractCommandRunE</code> to use this value. Doing that is simple enough. Right
+before we print things to the user, lets run our <code>subtract</code> function and then
+invert the sign if the user requested it. The value of the flag is stored in our
+<code>cmd</code> parameter.</p>
+<pre><code class="language-go">func subtractCommandRunE(cmd *cobra.Command, args []string) error {
+    //   .. everything up here is unchanged ...
+
+	result := subtract(values...)
+	invert, _ := cmd.Flags().GetBool(&quot;invert-sign&quot;) // get the flag value!
+	if invert {
+		result = -result
+	}
+
+	fmt.Fprintln(cmd.OutOrStdout(), result)
+
+	return nil
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-subcommands-to-subcommands"><a class="header" href="#adding-subcommands-to-subcommands">Adding subcommands to subcommands</a></h1>
+<p>So far, we've add the <code>subtract</code> and <code>sum</code> subcommands to the <code>math</code> root
+command. But it's possible to also add subcommands to other subcommands. </p>
+<p>Let's build a subcommand that logically groups <code>subtract</code> and <code>add</code>, called
+<code>arithmetic</code>. Let's break out <code>cobra-cli</code> to build out the base subcommand
+<code>arithmetic</code>. </p>
+<pre><code>$ cobra-cli add arithmetic
+arithmetic created at /Users/me/.go/src/github.com/opdev/cobra-primer/math
+</code></pre>
+<p>With this in place, let's go ahead and disable the Run function so that calling
+<code>math arithmetic</code> just displays help output. </p>
+<pre><code class="language-go">var arithmeticCmd = &amp;cobra.Command{
+	Use:   &quot;arithmetic&quot;,
+	Short: &quot;basic arithmetic functions&quot;,
+}
+</code></pre>
+<p>To move <code>sum</code> and <code>subtract</code> to be organized under <code>arithmetic</code> instead of the
+root command <code>math</code>, just open <code>sum.go</code> and <code>subtract</code>.go to their <code>init()</code>
+functions, and replace <code>rootCmd.AddCommand</code> with <code>arithmeticCmd.AddCommand</code>. </p>
+<p>Here's what <code>subtract.go</code>'s init function looks like now:</p>
+<pre><code class="language-go">func init() {
+	arithmeticCmd.AddCommand(subtractCmd)
+	subtractCmd.Flags().BoolP(&quot;invert-sign&quot;, &quot;i&quot;, false, &quot;inverts the sign of the result.&quot;)
+}
+</code></pre>
+<p>And our command &quot;tree&quot; went from this:</p>
+<p><img src="hands_on/../imgs/02.png" alt="original" /></p>
+<p>to this:</p>
+<p><img src="hands_on/../imgs/03.png" alt="final" /></p>
+<p>And our commands are logically grouped with the <code>arithmetic</code> subcommand:</p>
+<pre><code class="language-shell">$ go build . &amp;&amp; ./math arithmetic --help
+basic arithmetic functions
+
+Usage:
+  math arithmetic [command]
+
+Available Commands:
+  subtract    subtract integers
+  sum         add integers
+
+Flags:
+  -h, --help   help for arithmetic
+
+Use &quot;math arithmetic [command] --help&quot; for more information about a command.
+</code></pre>
+<p>If you were scaffolding a net-new command using <code>cobra-cli</code> and you wanted it
+organized under some command OTHER than the root command, you can pass the
+<code>--parent</code> flag to <code>cobra-cli</code> which will organize the new command under the new
+parent.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="marking-commands-deprecated"><a class="header" href="#marking-commands-deprecated">Marking commands deprecated</a></h1>
+<p>Say you need to deprecate the <code>sum</code> command in favor of an <code>addition</code> command.
+In this case, you simply add a <code>cobra.Command.Deprecated</code> key with a string
+indicating the message you want printed to the user.</p>
+<pre><code class="language-go">// source: cmd/sum.go
+var sumCmd = &amp;cobra.Command{
+    // ...nothing else changed...
+	Deprecated: `This command will be replaced by the &quot;addition&quot; command in the next release`,
+    // ...nothing else changed...
+
+	RunE: sumCommandRunE,
+}
+</code></pre>
+<p>And the message is passed to the user when this command is called.</p>
+<pre><code>$ go build . &amp;&amp; ./math arithmetic sum --help
+Command &quot;sum&quot; is deprecated, This command will be replaced by the &quot;addition&quot; command in the next release
+Given an arbitrary number of integer arguments,
+
+this will return the sum of all values.
+
+Usage:
+  math arithmetic sum [flags]
+
+Aliases:
+  sum, total
+
+Flags:
+  -h, --help   help for sum
+
+13:20:44 ~/.go/src/github.com/opdev/cobra-primer/math
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-hidden-commands"><a class="header" href="#adding-hidden-commands">Adding hidden commands</a></h1>
+<p>It's possible to add &quot;hidden&quot; commands, which are commands that do not show up
+in help output but can be called. I don't have a great use case for it, but
+either way, it's just a matter of making adding <code>cobra.Command.Hidden</code> and
+setting it to true. I've scaffolded a subcommand <code>supersecretmath</code> that I've
+marked hidden.</p>
+<pre><code>$ cobra-cli add supersecretmath
+supersecretmath created at /Users/me/.go/src/github.com/opdev/cobra-primer/math
+</code></pre>
+<pre><code class="language-go">// source: cmd/supersecretmath.go
+package cmd
+
+import (
+	&quot;fmt&quot;
+
+	&quot;github.com/spf13/cobra&quot;
+)
+
+// supersecretmathCmd represents the supersecretmath command
+var supersecretmathCmd = &amp;cobra.Command{
+	Use:    &quot;supersecretmath&quot;,
+	Hidden: true,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println(&quot;This is where we do super secret math!&quot;)
+	},
+}
+
+func init() {
+	rootCmd.AddCommand(supersecretmathCmd)
+}
+</code></pre>
+<p>We can't see this command in the help output!</p>
+<pre><code>$ go build . &amp;&amp; ./math --help
+Execute fun math functions
+
+Usage:
+  math [command]
+
+Available Commands:
+  arithmetic      basic arithmetic functions
+  completion      Generate the autocompletion script for the specified shell
+  help            Help about any command
+
+Flags:
+  -h, --help     help for math
+  -t, --toggle   Help message for toggle
+
+Use &quot;math [command] --help&quot; for more information about a command.
+</code></pre>
+<p>But we can certainly call it without a problem:</p>
+<pre><code>$ go build . &amp;&amp; ./math supersecretmath
+This is where we do super secret math!
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-persistent-flags"><a class="header" href="#adding-persistent-flags">Adding persistent flags</a></h1>
+<p>At this point, we have multiple levels of commands. What if we want a common
+flag across all levels of subcommands? Let's implement a <code>--show-inputs</code> flag that
+prints our inputs like so:</p>
+<pre><code class="language-shell"># math arithmetic sum --show-inputs 1 2
+1+2=3
+
+# math arithmetic subtract --show-inputs 1 2
+1-2=-1
+</code></pre>
+<p>We could add this flag as a <code>BoolP</code> to both the <code>subtractCmd</code> and the <code>sumCmd</code>,
+but we should instead bind it to the <code>arithmeticCmd</code> as a <strong>PersistentFlag</strong>.</p>
+<p>If you still have the comments scaffolded in the <code>init()</code> func by <code>cobra-cli</code>
+for the <code>cmd/arithmetic.go</code> file, you might see this line here:</p>
+<pre><code class="language-go">func init() {
+    // ... omitted
+	// arithmeticCmd.PersistentFlags().String(&quot;foo&quot;, &quot;&quot;, &quot;A help for foo&quot;)
+    // ... omitted
+}
+</code></pre>
+<p>A <strong>PersistentFlag</strong> is one that is passed along to child subcommands. Whereas a
+<strong>Flag</strong> on <code>arithmeticCmd</code> would not be passed down to <code>sumCmd</code> or
+<code>subtractCmd</code>, a <strong>PersistentFlag</strong> is made available to both of them.</p>
+<p>Uncomment this line and make it a BoolP flag called <code>show-inputs</code>, with
+shortflag <code>s</code>. Note: Making this a BoolP may require adding a parameter to the
+function call!</p>
+<pre><code class="language-go">// ... the rest of the code
+
+func init() {
+	rootCmd.AddCommand(arithmeticCmd)
+	arithmeticCmd.PersistentFlags().BoolP(&quot;show-inputs&quot;, &quot;s&quot;, false, &quot;whether to print inputs&quot;)
+}
+</code></pre>
+<p>Build and run <code>math arithmetic</code> to see the flag is now configured.</p>
+<pre><code class="language-shell">$ go build . &amp;&amp; ./math arithmetic --help
+basic arithmetic functions
+
+Usage:
+  math arithmetic [command]
+
+Available Commands:
+  subtract    subtract integers
+
+Flags:
+  -h, --help          help for arithmetic
+  -s, --show-inputs   whether to print inputs       # here it is!
+
+Use &quot;math arithmetic [command] --help&quot; for more information about a command.
+</code></pre>
+<p>Run the <code>math arithmetic subtract</code> command with the <code>--help</code> flag to see it
+listed there as a Global Flag:</p>
+<pre><code>$ go build . &amp;&amp; ./math arithmetic subtract --help
+subtract integers
+
+Usage:
+  math arithmetic subtract [flags]
+
+Flags:
+  -h, --help          help for subtract
+  -i, --invert-sign   inverts the sign of the result.
+
+Global Flags:
+  -s, --show-inputs   whether to print inputs
+</code></pre>
+<p>If you run just the <code>math</code> command, you'll notice that the flag is missing!</p>
+<pre><code>$ go build . &amp;&amp; ./math --help
+Execute fun math functions
+
+Usage:
+  math [command]
+
+Available Commands:
+  arithmetic      basic arithmetic functions
+  completion      Generate the autocompletion script for the specified shell
+  help            Help about any command
+
+Flags:
+  -h, --help     help for math
+  -t, --toggle   Help message for toggle
+
+Use &quot;math [command] --help&quot; for more information about a command.
+</code></pre>
+<p>So the flag is available at subcommands <em>below</em> where it is defined as shown here:</p>
+<p><img src="hands_on/../imgs/04.png" alt="persistentflag" /></p>
+<p>Accessing the persistent flag declared in the <code>arithmeticCmd</code> has a bit of a trick to it! </p>
+<p>When accessing the value from the <code>sumCommandRunE</code>, for example, we will still
+call <code>cmd.Flags()</code> and NOT <code>cmd.PersistentFlags()</code>. This is because
+<code>cmd.PersistentFlags()</code> only returns that specific command's persistent flags.
+To see all flags that apply to the command you are developing, you only need to
+call <code>cmd.Flags()</code>. </p>
+<pre><code class="language-go">func sumCommandRunE(cmd *cobra.Command, args []string) error { // return an error
+    // .. this code is unchanged ..
+
+	showInputs, _ := cmd.Flags().GetBool(&quot;show-inputs&quot;)
+	if showInputs {
+		fmt.Fprintf(cmd.OutOrStdout(), &quot;%s\n&quot;, strings.Join(args, &quot;+&quot;))
+	}
+
+	fmt.Fprintln(cmd.OutOrStdout(), sum(values...))
+
+	return nil
+}
+</code></pre>
+<p>We see this output after we build and run the new <code>math</code> binary:</p>
+<pre><code>$ go build . &amp;&amp; ./math arithmetic sum --show-inputs 2 3
+Command &quot;sum&quot; is deprecated, This command will be replaced by the &quot;addition&quot; command in the next release
+2+3
+5
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="testing"><a class="header" href="#testing">Testing</a></h1>
+<p>When testing cobra commands, you want to try and decouple your core logic into
+libraries, similar to what we did with the <code>sum</code> and <code>subtract</code> functions for
+their respective commands.</p>
+<p>This makes testing a bit easier in that you don't need to wrap a bunch of
+<code>cobra.Command</code> context into your unit tests.</p>
+<p>With that said, you may find yourself needing to test calling your cobra command
+to get more coverage. In that case, I would recommend borrowing a testing
+function from the cobra library itself.</p>
+<p>https://github.com/spf13/cobra/blob/main/command_test.go#L34-L43</p>
+<pre><code class="language-go">func executeCommandC(root *Command, args ...string) (c *Command, output string, err error) {
+	buf := new(bytes.Buffer)
+	root.SetOut(buf)
+	root.SetErr(buf)
+	root.SetArgs(args)
+
+	c, err = root.ExecuteC()
+
+	return c, buf.String(), err
+}
+</code></pre>
+<p>This function calls your commands and returns your stdout/stderr streams
+(together, but you can modify this to separate them if you need to), and an
+error if your command returned one. It also returns your command should you need
+it. </p>
+<p>So executing this for the subtract command would look something like this:</p>
+<pre><code class="language-go">func TestSubtractCmd(t *testing.T) {
+	_, _, err := executeCommandC(rootCmd, &quot;arithmetic&quot;, &quot;subtract&quot;, &quot;1&quot;, &quot;2&quot;)
+	if err != nil {
+		t.Log(err)
+		t.Fail()
+	}
+}
+</code></pre>
+<p>Here, we pass <code>rootCmd</code> as our command to execute. We could also pass
+<code>subtractCmd</code>, and then just pass <code>&quot;1&quot;</code> and <code>&quot;2&quot;</code> as parameters, but showing it
+this way might help in understanding all the various ways you can leverage
+<code>executeCommandC</code> to run your tests.</p>
+<p>NOTE: Remember earlier that we wrote our execution output to the
+<code>cmd.OutOrStdout</code> target. This is important here because we can actually
+evaluate the output of our command execution. If we had used <code>fmt.Println</code>
+instead, we would have a harder time trying to capture the command output stream
+to evaluate for any failures.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="final-word"><a class="header" href="#final-word">Final Word</a></h1>
+<p>I hope this has helped get started with the <a href="https://github.com/spf13/cobra">spf13/cobra</a> library, and using it to build complex commands. Note that while we use the <code>cobra-cli</code> to help scaffold out our code, none of it is absolutely necessary. You can just as easily just create your own <code>cobra.Command</code>s in net-new code, and go from there.</p>
+<p>Please check out the <a href="../appendix/links.html">links</a> for documentation, references, etc.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="appendix"><a class="header" href="#appendix">Appendix</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="links"><a class="header" href="#links">Links</a></h1>
+<ul>
+<li>https://github.com/spf13/cobra</li>
+<li>https://github.com/spf13/cobra/blob/master/user_guide.md</li>
+<li>https://github.com/spf13/cobra-cli/blob/main/README.md</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cat-in-go"><a class="header" href="#cat-in-go">Cat in Go</a></h1>
+<pre><code class="language-go">package main
+
+import (
+	&quot;bytes&quot;
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;os&quot;
+)
+
+var nFlag = flag.Bool(&quot;n&quot;, false, &quot;Number the output lines, starting at 1.&quot;)
+
+func main() {
+	flag.Parse()
+
+	// stop if the user didn't provide any arguments
+	if len(flag.Args()) == 0 {
+		return
+	}
+
+	encounterederrors := []error{}
+	// read and print each file the user provided.
+	for _, f := range flag.Args() {
+		fileData, err := os.ReadFile(f)
+		if err != nil {
+			// If we hit an error with a specific file, just skip it and move on
+			// and report the error later.
+			encounterederrors = append(encounterederrors, err)
+			break
+		}
+
+		if *nFlag {
+			// split at newlines so that we can number each line.
+			fileDataSplit := bytes.Split(fileData, []byte(&quot;\n&quot;))
+			// there's always an extra newline at the end when we split,
+			// so remove that.
+			fileDataSplit = fileDataSplit[0 : len(fileDataSplit)-1]
+
+			i := 1
+			for _, line := range fileDataSplit {
+				fmt.Fprintf(os.Stdout, &quot;\t%d\t%s\n&quot;, i, string(line))
+				i++
+			}
+
+			continue
+		}
+		
+		fmt.Fprintln(os.Stdout, string(fileData))
+	}
+
+	if len(encounterederrors) &gt; 0 {
+		for _, e := range encounterederrors {
+			fmt.Fprintln(os.Stderr, e)
+		}
+		os.Exit(1)
+	}
+
+	os.Exit(0)
+}
+
+</code></pre>
+<h2 id="output"><a class="header" href="#output">Output</a></h2>
+<pre><code>$ ./gocat -h
+Usage of ./gocat:
+  -n    Number the output lines, starting at 1.
+</code></pre>
+<pre><code>$ ./gocat main.go 
+package main
+
+import (
+        &quot;bytes&quot;
+        &quot;flag&quot;
+        &quot;fmt&quot;
+        &quot;os&quot;
+)
+
+var nFlag = flag.Bool(&quot;n&quot;, false, &quot;Number the output lines, starting at 1.&quot;)
+
+func main() {
+        flag.Parse()
+
+        // stop if the user didn't provide any arguments
+        if len(flag.Args()) == 0 {
+                return
+        }
+
+        encounterederrors := []error{}
+        // read and print each file the user provided.
+        for _, f := range flag.Args() {
+                fileData, err := os.ReadFile(f)
+                if err != nil {
+                        // If we hit an error with a specific file, just skip it and move on
+                        // and report the error later.
+                        encounterederrors = append(encounterederrors, err)
+                        break
+                }
+
+                if *nFlag {
+                        // split at newlines so that we can number each line.
+                        fileDataSplit := bytes.Split(fileData, []byte(&quot;\n&quot;))
+                        // there's always an extra newline at the end when we split,
+                        // so remove that.
+                        fileDataSplit = fileDataSplit[0 : len(fileDataSplit)-1]
+
+                        i := 1
+                        for _, line := range fileDataSplit {
+                                fmt.Fprintf(os.Stdout, &quot;\t%d\t%s\n&quot;, i, string(line))
+                                i++
+                        }
+                } else {
+                        fmt.Fprintln(os.Stdout, string(fileData))
+                }
+        }
+
+        if len(encounterederrors) &gt; 0 {
+                for _, e := range encounterederrors {
+                        fmt.Fprintln(os.Stderr, e)
+                }
+                os.Exit(1)
+        }
+
+        os.Exit(0)
+}
+
+</code></pre>
+<pre><code># ./gocat -n main.go 
+        1       package main
+        2
+        3       import (
+        4               &quot;bytes&quot;
+        5               &quot;flag&quot;
+        6               &quot;fmt&quot;
+        7               &quot;os&quot;
+        8       )
+        9
+        10      var nFlag = flag.Bool(&quot;n&quot;, false, &quot;Number the output lines, starting at 1.&quot;)
+        11
+        12      func main() {
+        13              flag.Parse()
+        14
+        15              // stop if the user didn't provide any arguments
+        16              if len(flag.Args()) == 0 {
+        17                      return
+        18              }
+        19
+        20              encounterederrors := []error{}
+        21              // read and print each file the user provided.
+        22              for _, f := range flag.Args() {
+        23                      fileData, err := os.ReadFile(f)
+        24                      if err != nil {
+        25                              // If we hit an error with a specific file, just skip it and move on
+        26                              // and report the error later.
+        27                              encounterederrors = append(encounterederrors, err)
+        28                              break
+        29                      }
+        30
+        31                      if *nFlag {
+        32                              // split at newlines so that we can number each line.
+        33                              fileDataSplit := bytes.Split(fileData, []byte(&quot;\n&quot;))
+        34                              // there's always an extra newline at the end when we split,
+        35                              // so remove that.
+        36                              fileDataSplit = fileDataSplit[0 : len(fileDataSplit)-1]
+        37
+        38                              i := 1
+        39                              for _, line := range fileDataSplit {
+        40                                      fmt.Fprintf(os.Stdout, &quot;\t%d\t%s\n&quot;, i, string(line))
+        41                                      i++
+        42                              }
+        43                      } else {
+        44                              fmt.Fprintln(os.Stdout, string(fileData))
+        45                      }
+        46              }
+        47
+        48              if len(encounterederrors) &gt; 0 {
+        49                      for _, e := range encounterederrors {
+        50                              fmt.Fprintln(os.Stderr, e)
+        51                      }
+        52                      os.Exit(1)
+        53              }
+        54
+        55              os.Exit(0)
+        56      }
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>

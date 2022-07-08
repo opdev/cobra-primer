@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Cat in Go - A Primer on Cobra</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/index.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../introduction/010_what_is_cobra.html"><strong aria-hidden="true">1.1.</strong> What is Cobra?</a></li><li class="chapter-item expanded "><a href="../introduction/020_anatomy_of_commandline.html"><strong aria-hidden="true">1.2.</strong> The anatomy of a commandline interface</a></li><li class="chapter-item expanded "><a href="../introduction/030_a_more_complex_cli.html"><strong aria-hidden="true">1.3.</strong> A more complex interface</a></li></ol></li><li class="chapter-item expanded "><a href="../hands_on/index.html"><strong aria-hidden="true">2.</strong> Hands on with Cobra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../hands_on/installing.html"><strong aria-hidden="true">2.1.</strong> The Cobra CLI</a></li><li class="chapter-item expanded "><a href="../hands_on/new_project.html"><strong aria-hidden="true">2.2.</strong> Creating a new project</a></li><li class="chapter-item expanded "><a href="../hands_on/rootcmd.html"><strong aria-hidden="true">2.3.</strong> The Root Command</a></li><li class="chapter-item expanded "><a href="../hands_on/rootcmd_helptext.html"><strong aria-hidden="true">2.4.</strong> Adding Relevant Help Text</a></li><li class="chapter-item expanded "><a href="../hands_on/adding_a_subcommand.html"><strong aria-hidden="true">2.5.</strong> Adding a subcommand</a></li><li class="chapter-item expanded "><a href="../hands_on/implementing_logic.html"><strong aria-hidden="true">2.6.</strong> Implementing Logic</a></li><li class="chapter-item expanded "><a href="../hands_on/wiring_up_arguments.html"><strong aria-hidden="true">2.7.</strong> Wiring up Arguments</a></li><li class="chapter-item expanded "><a href="../hands_on/using_RunE.html"><strong aria-hidden="true">2.8.</strong> Returning an error</a></li><li class="chapter-item expanded "><a href="../hands_on/filtering_arguments.html"><strong aria-hidden="true">2.9.</strong> Enforcing Expectations on Arguments</a></li><li class="chapter-item expanded "><a href="../hands_on/cmd_output.html"><strong aria-hidden="true">2.10.</strong> Writing to STDOUT and STDERR</a></li><li class="chapter-item expanded "><a href="../hands_on/adding_an_alias.html"><strong aria-hidden="true">2.11.</strong> Adding an alias</a></li><li class="chapter-item expanded "><a href="../hands_on/subtraction.html"><strong aria-hidden="true">2.12.</strong> Adding another subcommand</a></li><li class="chapter-item expanded "><a href="../hands_on/adding_flags.html"><strong aria-hidden="true">2.13.</strong> Adding a flag</a></li><li class="chapter-item expanded "><a href="../hands_on/another_subcommand.html"><strong aria-hidden="true">2.14.</strong> Adding subcommands to subcommands</a></li><li class="chapter-item expanded "><a href="../hands_on/deprecations.html"><strong aria-hidden="true">2.15.</strong> Marking commands deprecated</a></li><li class="chapter-item expanded "><a href="../hands_on/hidden_cmds.html"><strong aria-hidden="true">2.16.</strong> Adding hidden commands</a></li><li class="chapter-item expanded "><a href="../hands_on/persistent_flags.html"><strong aria-hidden="true">2.17.</strong> Adding persistent flags</a></li><li class="chapter-item expanded "><a href="../hands_on/testing.html"><strong aria-hidden="true">2.18.</strong> Testing</a></li></ol></li><li class="chapter-item expanded "><a href="../closing.html"><strong aria-hidden="true">3.</strong> Final Word</a></li><li class="chapter-item expanded "><a href="../appendix/index.html"><strong aria-hidden="true">4.</strong> Appendix</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../appendix/links.html"><strong aria-hidden="true">4.1.</strong> Links</a></li><li class="chapter-item expanded "><a href="../appendix/gocat.html" class="active"><strong aria-hidden="true">4.2.</strong> Cat in Go</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">A Primer on Cobra</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="cat-in-go"><a class="header" href="#cat-in-go">Cat in Go</a></h1>
+<pre><code class="language-go">package main
+
+import (
+	&quot;bytes&quot;
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;os&quot;
+)
+
+var nFlag = flag.Bool(&quot;n&quot;, false, &quot;Number the output lines, starting at 1.&quot;)
+
+func main() {
+	flag.Parse()
+
+	// stop if the user didn't provide any arguments
+	if len(flag.Args()) == 0 {
+		return
+	}
+
+	encounterederrors := []error{}
+	// read and print each file the user provided.
+	for _, f := range flag.Args() {
+		fileData, err := os.ReadFile(f)
+		if err != nil {
+			// If we hit an error with a specific file, just skip it and move on
+			// and report the error later.
+			encounterederrors = append(encounterederrors, err)
+			break
+		}
+
+		if *nFlag {
+			// split at newlines so that we can number each line.
+			fileDataSplit := bytes.Split(fileData, []byte(&quot;\n&quot;))
+			// there's always an extra newline at the end when we split,
+			// so remove that.
+			fileDataSplit = fileDataSplit[0 : len(fileDataSplit)-1]
+
+			i := 1
+			for _, line := range fileDataSplit {
+				fmt.Fprintf(os.Stdout, &quot;\t%d\t%s\n&quot;, i, string(line))
+				i++
+			}
+
+			continue
+		}
+		
+		fmt.Fprintln(os.Stdout, string(fileData))
+	}
+
+	if len(encounterederrors) &gt; 0 {
+		for _, e := range encounterederrors {
+			fmt.Fprintln(os.Stderr, e)
+		}
+		os.Exit(1)
+	}
+
+	os.Exit(0)
+}
+
+</code></pre>
+<h2 id="output"><a class="header" href="#output">Output</a></h2>
+<pre><code>$ ./gocat -h
+Usage of ./gocat:
+  -n    Number the output lines, starting at 1.
+</code></pre>
+<pre><code>$ ./gocat main.go 
+package main
+
+import (
+        &quot;bytes&quot;
+        &quot;flag&quot;
+        &quot;fmt&quot;
+        &quot;os&quot;
+)
+
+var nFlag = flag.Bool(&quot;n&quot;, false, &quot;Number the output lines, starting at 1.&quot;)
+
+func main() {
+        flag.Parse()
+
+        // stop if the user didn't provide any arguments
+        if len(flag.Args()) == 0 {
+                return
+        }
+
+        encounterederrors := []error{}
+        // read and print each file the user provided.
+        for _, f := range flag.Args() {
+                fileData, err := os.ReadFile(f)
+                if err != nil {
+                        // If we hit an error with a specific file, just skip it and move on
+                        // and report the error later.
+                        encounterederrors = append(encounterederrors, err)
+                        break
+                }
+
+                if *nFlag {
+                        // split at newlines so that we can number each line.
+                        fileDataSplit := bytes.Split(fileData, []byte(&quot;\n&quot;))
+                        // there's always an extra newline at the end when we split,
+                        // so remove that.
+                        fileDataSplit = fileDataSplit[0 : len(fileDataSplit)-1]
+
+                        i := 1
+                        for _, line := range fileDataSplit {
+                                fmt.Fprintf(os.Stdout, &quot;\t%d\t%s\n&quot;, i, string(line))
+                                i++
+                        }
+                } else {
+                        fmt.Fprintln(os.Stdout, string(fileData))
+                }
+        }
+
+        if len(encounterederrors) &gt; 0 {
+                for _, e := range encounterederrors {
+                        fmt.Fprintln(os.Stderr, e)
+                }
+                os.Exit(1)
+        }
+
+        os.Exit(0)
+}
+
+</code></pre>
+<pre><code># ./gocat -n main.go 
+        1       package main
+        2
+        3       import (
+        4               &quot;bytes&quot;
+        5               &quot;flag&quot;
+        6               &quot;fmt&quot;
+        7               &quot;os&quot;
+        8       )
+        9
+        10      var nFlag = flag.Bool(&quot;n&quot;, false, &quot;Number the output lines, starting at 1.&quot;)
+        11
+        12      func main() {
+        13              flag.Parse()
+        14
+        15              // stop if the user didn't provide any arguments
+        16              if len(flag.Args()) == 0 {
+        17                      return
+        18              }
+        19
+        20              encounterederrors := []error{}
+        21              // read and print each file the user provided.
+        22              for _, f := range flag.Args() {
+        23                      fileData, err := os.ReadFile(f)
+        24                      if err != nil {
+        25                              // If we hit an error with a specific file, just skip it and move on
+        26                              // and report the error later.
+        27                              encounterederrors = append(encounterederrors, err)
+        28                              break
+        29                      }
+        30
+        31                      if *nFlag {
+        32                              // split at newlines so that we can number each line.
+        33                              fileDataSplit := bytes.Split(fileData, []byte(&quot;\n&quot;))
+        34                              // there's always an extra newline at the end when we split,
+        35                              // so remove that.
+        36                              fileDataSplit = fileDataSplit[0 : len(fileDataSplit)-1]
+        37
+        38                              i := 1
+        39                              for _, line := range fileDataSplit {
+        40                                      fmt.Fprintf(os.Stdout, &quot;\t%d\t%s\n&quot;, i, string(line))
+        41                                      i++
+        42                              }
+        43                      } else {
+        44                              fmt.Fprintln(os.Stdout, string(fileData))
+        45                      }
+        46              }
+        47
+        48              if len(encounterederrors) &gt; 0 {
+        49                      for _, e := range encounterederrors {
+        50                              fmt.Fprintln(os.Stderr, e)
+        51                      }
+        52                      os.Exit(1)
+        53              }
+        54
+        55              os.Exit(0)
+        56      }
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../appendix/links.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../appendix/links.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
