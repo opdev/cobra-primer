@@ -1,6 +1,6 @@
 # Adding another subcommand
 
-Let's break out `cobra-cli` and add a `subtract` subcommand! Run this from the
+Let's break out `cobra-cli` again and add a `subtract` subcommand! Run this from the
 base of your repository.
 
 ```

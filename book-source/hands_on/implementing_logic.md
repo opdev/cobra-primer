@@ -43,8 +43,8 @@ func sumCommandRun(cmd *cobra.Command, args []string) {
 
 Subjectively, this makes the cobra command a little bit easier to read.
 
-Let's replace this placeholder `println` with some logic. I'll write a sum
-function that look something like this (there may already be sum functions, but
+Let's replace this placeholder `Println` with some logic. I'll write a sum
+function that looks something like this (there may already be sum functions, but
 these are simple enough to write):
 
 ```go
@@ -59,7 +59,7 @@ func sum(values ...int) int {
 ```
 
 You should be able to call this function with an arbitrary number of integer
-values and get the sum of those values. Check it out on the [Go
+values and get the sum of their values. Check it out on the [Go
 Playground](https://go.dev/play/)
 
 Our core logic is written, so now we just need to wire up the arguments that the

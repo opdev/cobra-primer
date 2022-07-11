@@ -15,7 +15,7 @@ root of your source code repository.
 cobra-cli add sum
 ```
 
-You should now see a new `cmd/sum.go` file in place:
+You should now see a new file, `cmd/sum.go`, in place:
 
 
 ```
@@ -82,6 +82,6 @@ sum called
 
 If you're following along, go ahead and practice what we did with the root
 command: Change the Short and Long descriptions for the `sumCmd` to indicate
-that we will take an arbitrary number of integers and return the sum of those
+that we will take an arbitrary number of integers and return the sum of their
 values.
 

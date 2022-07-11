@@ -33,7 +33,7 @@ commands to interact with our cluster (such as `get`, `describe`, `create`,
 etc). And each subcommand may have its own flags, on top of those already built
 into the top-level `kubectl command`. 
 
-Building this kind of commandline interface with just the **flag** package can
+Building this kind of commandline interface with the Golang **flag** package can
 be complex. The **flag** package helps us extract short and long flags out of
 the arguments passed into our binary by the user, but we need to build in these
 relationships such that each subcommand may have its own flags, and the base
