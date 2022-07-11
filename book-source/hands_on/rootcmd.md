@@ -1,8 +1,8 @@
 # The Root Command
 
-Inside of the `cmd` directory ("package") that `cobra-cli` scaffolded for you
+Inside the `cmd` directory ("package") that `cobra-cli` scaffolded for you
 should be a file called `root.go`. Let's look at some key parts of this file
-(I've truncated a few sections with `...` so that it sits cleaner in this book.)
+(I've truncated a few sections with ellipsis, `...`, so that it appears cleaner in this book.)
 
 ```go
 // rootCmd represents the base command when called without any subcommands

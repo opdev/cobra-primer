@@ -26,7 +26,7 @@ when we converted from `[]string` to `[]int`. Take a look at the line with block
 // ...
 ```
 
-Here we use the `strconv` librarie's `Atoi` function to convert the string value
+Here we use the `strconv` module's `Atoi` function to convert the string value
 to an integer, and then we disregard the second return value which is an error.
 Ideally, we want to return that error, but we have a bit of a problem. Our
 `sumCommandRun` function doesn't return an error, but that's easy enough to fix:
