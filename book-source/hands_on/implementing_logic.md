@@ -59,8 +59,8 @@ func sum(values ...int) int {
 ```
 
 You should be able to call this function with an arbitrary number of integer
-values and get the sum of their values. Check it out on the [Go
-Playground](https://go.dev/play/)
+values and get the sum of their values. Check it out on the
+[Go Playground](https://go.dev/play/p/bVU119UbbkI).
 
 Our core logic is written, so now we just need to wire up the arguments that the
 user provided to this function.
