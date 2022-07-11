@@ -156,7 +156,7 @@ have some of its own flags that apply to all subcommands (see <code>kubectl opti
 commands to interact with our cluster (such as <code>get</code>, <code>describe</code>, <code>create</code>,
 etc). And each subcommand may have its own flags, on top of those already built
 into the top-level <code>kubectl command</code>. </p>
-<p>Building this kind of commandline interface with just the <strong>flag</strong> package can
+<p>Building this kind of commandline interface with the Golang <strong>flag</strong> package can
 be complex. The <strong>flag</strong> package helps us extract short and long flags out of
 the arguments passed into our binary by the user, but we need to build in these
 relationships such that each subcommand may have its own flags, and the base

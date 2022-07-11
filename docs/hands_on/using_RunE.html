@@ -155,7 +155,7 @@ when we converted from <code>[]string</code> to <code>[]int</code>. Take a look 
     }
 // ...
 </code></pre>
-<p>Here we use the <code>strconv</code> librarie's <code>Atoi</code> function to convert the string value
+<p>Here we use the <code>strconv</code> module's <code>Atoi</code> function to convert the string value
 to an integer, and then we disregard the second return value which is an error.
 Ideally, we want to return that error, but we have a bit of a problem. Our
 <code>sumCommandRun</code> function doesn't return an error, but that's easy enough to fix:</p>
