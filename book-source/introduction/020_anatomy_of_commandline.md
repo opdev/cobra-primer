@@ -26,4 +26,4 @@ Finally, we would just need to review the argument list to grab the final value 
 But what if we want something more complex?
 
 _For reference, a naive implementation of `cat` with the `-n` flag using the
-**flag** package is [here](./appendix/gocat.md)._
+**flag** package is [here](../appendix/gocat.md)._
